@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  late WebViewXController webController;
 
   @override
   Widget build(BuildContext context) {

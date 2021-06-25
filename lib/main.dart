@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:packages_exercise_monstarlab/data/data.dart';
+import 'package:packages_exercise_monstarlab/widgets/website_button.dart';
 import 'package:webviewx/webviewx.dart';
 
 void main() {
@@ -20,7 +22,6 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +34,13 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView(
-        children: [
-          
-        ],
+      body: ListView.builder(
+        itemCount: websites.length,
+        itemBuilder: (context, int index) {
+          return WebsiteButton(
+            website: websites[index],
+          );
+        },
       ),
     );
   }

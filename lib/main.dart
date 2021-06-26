@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
+        physics: BouncingScrollPhysics(),
         itemCount: websites.length,
         itemBuilder: (context, int index) {
           return WebsiteButton(

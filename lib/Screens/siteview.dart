@@ -1,42 +1,41 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:webviewx/webviewx.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:packages_exercise_monstarlab/models/website.dart';
-import 'package:time/time.dart';
 
-class Siteview extends StatefulWidget {
+class Siteview extends StatelessWidget {
   final Website website;
-  late WebViewXController webviewController;
   final DateTime time = DateTime.now();
+
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
 
   Siteview({required this.website});
 
-  @override
-  _SiteviewState createState() => _SiteviewState();
-}
-
-class _SiteviewState extends State<Siteview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Text(
-            widget.time.toString(),
-            style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300
+          Center(
+            child: Text(
+              time.toString(),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),
           ),
         ],
         title: Text(
-          widget.website.websiteName,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600
-          ),
+          website.websiteName,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
         ),
       ),
-      body: ,
+      body: WebView(
+        initialUrl: website.url,
+        javascriptMode: JavascriptMode.unrestricted,
+        onWebViewCreated: (WebViewController webViewController) {
+          _controller.complete(webViewController);
+        },
+      ),
     );
   }
 }

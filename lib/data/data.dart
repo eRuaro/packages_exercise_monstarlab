@@ -13,9 +13,9 @@ final _web2 = Website(
 );
 
 final _web3 = Website(
-  websiteName: 'GitHub',
-  url: 'http://github.com/',
-  imageFile: 'github.jpg',
+  websiteName: 'LinkedIn',
+  url: 'https://www.linkedin.com/',
+  imageFile: 'linkedin.jpg',
 );
 
 final List<Website> websites = [
